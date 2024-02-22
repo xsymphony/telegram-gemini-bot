@@ -2,7 +2,9 @@ package application
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -14,6 +16,8 @@ func welcome(c *gin.Context) {
 		c.String(http.StatusOK, err.Error())
 		return
 	}
+	dir, _ := os.Getwd()
+	log.Println(dir)
 	c.IndentedJSON(http.StatusOK, resp)
 }
 
@@ -57,7 +61,7 @@ func recvMessage(c *gin.Context) {
 }
 
 func Register(g *gin.Engine) {
-	g.GET("/", index)
+	g.GET("/", welcome)
 	g.POST("/message", recvMessage)
 	g.POST("/webhook", setWebhook)
 	g.DELETE("/webhook", stopWebhook)
