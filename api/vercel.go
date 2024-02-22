@@ -12,7 +12,7 @@ var (
 )
 
 func init() {
-	gateway = gin.New()
+	gateway = gin.Default()
 	application.Register(gateway)
 }
 
