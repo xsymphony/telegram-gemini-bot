@@ -8,16 +8,16 @@ import (
 )
 
 func welcome(c *gin.Context) {
-	resp, err := Bot().client.GetWebhookInfo()
+	resp, err := tgBot().client.GetWebhookInfo()
 	if err != nil {
 		c.String(http.StatusOK, err.Error())
 		return
 	}
-	c.JSON(http.StatusOK, resp)
+	c.IndentedJSON(http.StatusOK, resp)
 }
 
 func setWebhook(c *gin.Context) {
-	if err := Bot().StartWebhook(); err != nil {
+	if err := tgBot().StartWebhook(); err != nil {
 		c.JSON(http.StatusOK, gin.H{"message": err.Error()})
 		return
 	}
@@ -25,7 +25,7 @@ func setWebhook(c *gin.Context) {
 }
 
 func stopWebhook(c *gin.Context) {
-	if err := Bot().StopWebhook(); err != nil {
+	if err := tgBot().StopWebhook(); err != nil {
 		c.JSON(http.StatusOK, gin.H{"message": err.Error()})
 		return
 	}
@@ -38,7 +38,7 @@ func recvMessage(c *gin.Context) {
 		c.JSON(http.StatusBadGateway, gin.H{"error": err.Error()})
 		return
 	}
-	if err := Bot().RecvMessage(&update); err != nil {
+	if err := tgBot().RecvMessage(&update); err != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"error": err.Error()})
 		return
 	}
