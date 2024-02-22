@@ -29,7 +29,7 @@ func stopWebhook(c *gin.Context) {
 
 func recvMessage(c *gin.Context) {
 	var update tgbotapi.Update
-	if err := c.Bind(&update); err != nil {
+	if err := c.BindJSON(&update); err != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"error": err.Error()})
 		return
 	}
