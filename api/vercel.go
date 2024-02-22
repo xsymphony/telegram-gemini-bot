@@ -1,10 +1,9 @@
-package handler
+package main
 
 import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/xsymphony/telegram-gemini-bot/application"
 )
 
 var (
@@ -13,8 +12,8 @@ var (
 
 func init() {
 	gateway = gin.Default()
-	// gateway.LoadHTMLGlob("/application/template/*")
-	application.Register(gateway)
+	gateway.LoadHTMLGlob("templates/*")
+	Register(gateway)
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
