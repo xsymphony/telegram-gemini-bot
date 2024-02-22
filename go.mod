@@ -2,7 +2,10 @@ module github.com/xsymphony/telegram-gemini-bot
 
 go 1.20
 
-require github.com/gin-gonic/gin v1.9.1
+require (
+	github.com/gin-gonic/gin v1.9.1
+	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
+)
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
