@@ -13,7 +13,7 @@ var (
 
 func init() {
 	gateway = gin.Default()
-	gateway.LoadHTMLGlob("application/template/*")
+	gateway.LoadHTMLGlob("/application/template/*")
 	application.Register(gateway)
 }
 
