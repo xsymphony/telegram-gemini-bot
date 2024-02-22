@@ -45,7 +45,7 @@ var sessions = &Sessions{}
 func (sessions *Sessions) Ask(sender int64, content string) (string, error) {
 	session := sessions.get(sender)
 	if session == nil {
-		session := &Session{
+		session = &Session{
 			Sender:      sender,
 			ChatSession: gemini().StartChat(),
 		}
