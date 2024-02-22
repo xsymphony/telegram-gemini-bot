@@ -105,6 +105,8 @@ func (bot *TgBot) handleText(update *tgbotapi.Update) error {
 
 	log.Printf("[telegram]%s: %s\n", update.Message.From.UserName, update.Message.Text)
 
+	_ = bot.typing(update.Message.Chat.ID)
+
 	reply, err := sessions.Ask(update.Message.From.ID, update.Message.Text)
 	if err != nil {
 		return bot.reply(update.Message.MessageID, update.Message.Chat.ID, fmt.Sprintf("gemini响应错误:%s", err.Error()))

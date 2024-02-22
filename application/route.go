@@ -1,6 +1,7 @@
 package application
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -14,6 +15,16 @@ func welcome(c *gin.Context) {
 		return
 	}
 	c.IndentedJSON(http.StatusOK, resp)
+}
+
+func index(c *gin.Context) {
+	webhookInfo, err := tgBot().client.GetWebhookInfo()
+	if err != nil {
+		c.HTML(200, "index.html", gin.H{})
+		return
+	}
+	v, _ := json.MarshalIndent(webhookInfo, "", "    ")
+	c.HTML(200, "index.html", gin.H{"WebhookInfo": string(v)})
 }
 
 func setWebhook(c *gin.Context) {
@@ -46,7 +57,7 @@ func recvMessage(c *gin.Context) {
 }
 
 func Register(g *gin.Engine) {
-	g.GET("/", welcome)
+	g.GET("/", index)
 	g.POST("/message", recvMessage)
 	g.POST("/webhook", setWebhook)
 	g.DELETE("/webhook", stopWebhook)
