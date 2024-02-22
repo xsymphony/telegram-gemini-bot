@@ -8,7 +8,12 @@ import (
 )
 
 func welcome(c *gin.Context) {
-	c.String(http.StatusOK, "Welcome!")
+	resp, err := Bot().client.GetWebhookInfo()
+	if err != nil {
+		c.String(http.StatusOK, err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, resp)
 }
 
 func setWebhook(c *gin.Context) {
@@ -30,6 +35,10 @@ func stopWebhook(c *gin.Context) {
 func recvMessage(c *gin.Context) {
 	var update tgbotapi.Update
 	if err := c.BindJSON(&update); err != nil {
+		c.JSON(http.StatusBadGateway, gin.H{"error": err.Error()})
+		return
+	}
+	if err := Bot().RecvMessage(&update); err != nil {
 		c.JSON(http.StatusBadGateway, gin.H{"error": err.Error()})
 		return
 	}
