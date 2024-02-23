@@ -12,7 +12,7 @@ import (
 
 func LoadHTMLFromEmbedFS(engine *gin.Engine, embedFS embed.FS, pattern string) {
 	root := template.New("")
-	tmpl := template.Must(template.New(""), loadAndAddToRoot(engine.FuncMap, root, embedFS, pattern))
+	tmpl := template.Must(root, loadAndAddToRoot(engine.FuncMap, root, embedFS, pattern))
 	engine.SetHTMLTemplate(tmpl)
 }
 
