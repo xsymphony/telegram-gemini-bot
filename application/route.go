@@ -2,12 +2,12 @@ package application
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 	"os"
 
 	"github.com/gin-gonic/gin"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"github.com/xsymphony/telegram-gemini-bot/utils"
 )
 
 func welcome(c *gin.Context) {
@@ -17,7 +17,7 @@ func welcome(c *gin.Context) {
 		return
 	}
 	dir, _ := os.Getwd()
-	log.Println(dir)
+	utils.PrintTree(dir, "")
 	c.IndentedJSON(http.StatusOK, resp)
 }
 
