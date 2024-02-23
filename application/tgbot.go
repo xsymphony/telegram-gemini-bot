@@ -8,6 +8,7 @@ import (
 	"sync"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	tg_extra "github.com/xsymphony/telegram-gemini-bot/pkg/tg-extra"
 )
 
 type TgBot struct {
@@ -121,7 +122,7 @@ func (bot *TgBot) typing(chatID int64) error {
 }
 
 func (bot *TgBot) reply(replyMessageID int, chatID int64, content string) error {
-	content = escapeMarkdownV2(content)
+	content = tg_extra.EscapeMarkdownV2(content, 0)
 	msg := tgbotapi.NewMessage(chatID, content)
 	msg.ReplyToMessageID = replyMessageID
 	msg.ParseMode = "MarkdownV2"
@@ -161,13 +162,4 @@ func (bot *TgBot) filterUselessGroupMessage(update *tgbotapi.Update) bool {
 		return true
 	}
 	return false
-}
-
-func escapeMarkdownV2(text string) string {
-	// 转义MarkdownV2中的特殊字符
-	escapeChars := []string{"_", "*", "[", "]", "(", ")", "~", "`", ">", "#", "+", "-", "=", "|", "{", "}", ".", "!"}
-	for _, char := range escapeChars {
-		text = strings.ReplaceAll(text, char, "\\"+char)
-	}
-	return text
 }
