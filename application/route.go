@@ -20,11 +20,11 @@ func welcome(c *gin.Context) {
 func index(c *gin.Context) {
 	webhookInfo, err := tgBot().client.GetWebhookInfo()
 	if err != nil {
-		c.HTML(200, "index.html", gin.H{})
+		c.HTML(200, "templates/index.html", gin.H{})
 		return
 	}
 	v, _ := json.MarshalIndent(webhookInfo, "", "    ")
-	c.HTML(200, "index.html", gin.H{"WebhookInfo": string(v)})
+	c.HTML(200, "templates/index.html", gin.H{"WebhookInfo": string(v)})
 }
 
 func setWebhook(c *gin.Context) {
