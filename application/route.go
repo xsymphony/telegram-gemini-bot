@@ -8,15 +8,6 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-func welcome(c *gin.Context) {
-	resp, err := tgBot().client.GetWebhookInfo()
-	if err != nil {
-		c.String(http.StatusOK, err.Error())
-		return
-	}
-	c.IndentedJSON(http.StatusOK, resp)
-}
-
 func index(c *gin.Context) {
 	webhookInfo, err := tgBot().client.GetWebhookInfo()
 	if err != nil {
