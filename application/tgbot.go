@@ -121,8 +121,10 @@ func (bot *TgBot) typing(chatID int64) error {
 }
 
 func (bot *TgBot) reply(replyMessageID int, chatID int64, content string) error {
+	content = escapeMarkdownV2(content)
 	msg := tgbotapi.NewMessage(chatID, content)
 	msg.ReplyToMessageID = replyMessageID
+	msg.ParseMode = "MarkdownV2"
 	_, err := bot.client.Send(msg)
 	log.Printf("[telegram]%s: %s\n", bot.client.Self.UserName, content)
 	return err
@@ -159,4 +161,13 @@ func (bot *TgBot) filterUselessGroupMessage(update *tgbotapi.Update) bool {
 		return true
 	}
 	return false
+}
+
+func escapeMarkdownV2(text string) string {
+	// 转义MarkdownV2中的特殊字符
+	escapeChars := []string{"_", "*", "[", "]", "(", ")", "~", "`", ">", "#", "+", "-", "=", "|", "{", "}", ".", "!"}
+	for _, char := range escapeChars {
+		text = strings.ReplaceAll(text, char, "\\"+char)
+	}
+	return text
 }
