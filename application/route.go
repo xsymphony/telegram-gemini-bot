@@ -57,7 +57,7 @@ func recvMessage(c *gin.Context) {
 }
 
 func Register(g *gin.Engine) {
-	g.GET("/", welcome)
+	g.GET("/", index)
 	g.POST("/message", recvMessage)
 	g.POST("/webhook", setWebhook)
 	g.DELETE("/webhook", stopWebhook)
