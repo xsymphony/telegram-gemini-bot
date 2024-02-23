@@ -4,15 +4,10 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"regexp"
 	"strings"
 	"sync"
 
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-)
-
-var (
-	markdownV2Re = regexp.MustCompile(`(\[[^\][]*]\(http[^()]*\))|[_*[\]()~>#+=|{}.!\-]`)
 )
 
 type TgBot struct {
@@ -126,12 +121,8 @@ func (bot *TgBot) typing(chatID int64) error {
 }
 
 func (bot *TgBot) reply(replyMessageID int, chatID int64, content string) error {
-	content = markdownV2Re.ReplaceAllStringFunc(content, func(x string) string {
-		return "\\" + x
-	})
 	msg := tgbotapi.NewMessage(chatID, content)
 	msg.ReplyToMessageID = replyMessageID
-	msg.ParseMode = "MarkdownV2"
 	_, err := bot.client.Send(msg)
 	log.Printf("[telegram]%s: %s\n", bot.client.Self.UserName, content)
 	return err
