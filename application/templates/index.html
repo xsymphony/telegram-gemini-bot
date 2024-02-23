@@ -69,8 +69,9 @@
                 return response.json();
             })
             .then(data => {
-                console.log(data);
-                alert(data)
+                console.log(JSON.stringify(data));
+                alert(JSON.stringify(data));
+                location.reload(); // 刷新当前页面
             })
             .catch(error => {
                 console.error('There was an error with the fetch operation:', error);
@@ -91,8 +92,9 @@
                 return response.json();
             })
             .then(data => {
-                console.log(data);
-                alert(data)
+                console.log(JSON.stringify(data));
+                alert(JSON.stringify(data));
+                location.reload(); // 刷新当前页面
             })
             .catch(error => {
                 console.error('There was an error with the fetch operation:', error);

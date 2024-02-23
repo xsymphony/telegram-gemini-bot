@@ -5,6 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/xsymphony/telegram-gemini-bot/application"
+	gin_extra "github.com/xsymphony/telegram-gemini-bot/pkg/gin-extra"
 )
 
 var (
@@ -13,7 +14,7 @@ var (
 
 func init() {
 	gateway = gin.Default()
-	gateway.LoadHTMLGlob("application/template/*")
+	gin_extra.LoadHTMLFromEmbedFS(gateway, application.EmbedFS, "templates/*html")
 	application.Register(gateway)
 }
 
