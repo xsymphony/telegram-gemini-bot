@@ -1,5 +1,12 @@
-# Telegram Gemini Bot
-> One-click deployment of a Telegram bot using the Gemini API
+<h1 align="center">telegram-gemini-bot</h1>
+
+<p align="center">
+🔨One-click deployment of a Telegram bot using the Gemini API
+</p>
+
+<p align="center">
+<a href="README.md">中文</a> | English
+</p>
 
 ## Preview
 <img src="screenshot/chat.png" alt="chat" width="400"/>
@@ -27,3 +34,8 @@ Other available addresses include:
 4. Fill in the `DOMAIN` environment variable in the format `https://telegram-gemini-bot-{{github user name}}-projects.vercel.app`. If you input an incorrect address at this step, you can also modify the environment variables after deployment and restart the task to apply the correct address.
 5. Visit the successfully deployed project page, click `Enable bot message callback`, and then the page will refresh, displaying the correct webhook setup information, indicating that it has taken effect.
 6. Chat with the Telegram bot you created to verify if message handling is correct.
+
+
+## LICENSE
+
+[MIT](https://opensource.org/license/mit/)
