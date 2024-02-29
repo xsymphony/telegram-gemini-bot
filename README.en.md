@@ -1,5 +1,12 @@
-# Telegram Gemini Bot
-> One-click deployment of a Telegram bot using the Gemini API
+<h1 align="center">telegram-gemini-bot</h1>
+
+<p align="center">
+🔨One-click deployment of a Telegram bot using the Gemini API
+</p>
+
+<p align="center">
+<a href="README.md">中文</a> | English
+</p>
 
 ## Preview
 <img src="screenshot/chat.png" alt="chat" width="400"/>

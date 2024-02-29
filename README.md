@@ -1,7 +1,12 @@
-# Telegram Gemini Bot
-> 一键部署使用Gemini API的Telegram机器人
+<h1 align="center">telegram-gemini-bot</h1>
 
-Looking for an English version? [You can check it here](README.en.md)
+<p align="center">
+🔨一键部署使用Gemini API的Telegram机器人
+</p>
+
+<p align="center">
+中文 | <a href="README.en.md">English</a>
+</p>
 
 ## 预览
 <img src="screenshot/chat.png" alt="chat" width="400"/>
