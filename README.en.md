@@ -34,3 +34,8 @@ Other available addresses include:
 4. Fill in the `DOMAIN` environment variable in the format `https://telegram-gemini-bot-{{github user name}}-projects.vercel.app`. If you input an incorrect address at this step, you can also modify the environment variables after deployment and restart the task to apply the correct address.
 5. Visit the successfully deployed project page, click `Enable bot message callback`, and then the page will refresh, displaying the correct webhook setup information, indicating that it has taken effect.
 6. Chat with the Telegram bot you created to verify if message handling is correct.
+
+
+## LICENSE
+
+[MIT](https://opensource.org/license/mit/)

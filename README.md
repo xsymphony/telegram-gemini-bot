@@ -34,3 +34,8 @@
 4. 按照`https://telegram-gemini-bot-{{github user name}}-projects.vercel.app`的形式填充环境变量`DOMAIN`。若这一步填入错误地址，也可以在部署完成后，修改环境变量，重启任务生效正确地址。
 5. 进入部署成功的项目页面，点击`开启机器人消息回调`，随后页面刷新，展示正确的webhook设置信息即代表生效。
 6. 与自己创建的telegram bot对话，验证消息处理是否正确。
+
+
+## 开源协议
+
+[MIT](https://opensource.org/license/mit/)
